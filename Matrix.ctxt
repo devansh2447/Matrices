@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Matrix
+comment1.params=
+comment1.target=Matrix()
+comment2.params=rows\ columns
+comment2.target=Matrix(int,\ int)
+comment3.params=rows\ columns\ elements
+comment3.target=Matrix(int,\ int,\ int[])
+comment4.params=
+comment4.target=int\ size()
+comment5.params=add
+comment5.target=Matrix\ add(int)
+comment6.params=add
+comment6.target=Matrix\ add(Matrix)
+comment7.params=int1\ int2
+comment7.target=int\ getSmaller(int,\ int)
+comment8.params=args
+comment8.target=void\ main(java.lang.String[])
+numComments=9
