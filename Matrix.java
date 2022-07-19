@@ -4,6 +4,8 @@ public class Matrix{
         int rows;
         int columns;
 
+        //develop methods for multiplication
+        
         public Matrix(){
             this.rows = 1;
             this.columns = 1;
