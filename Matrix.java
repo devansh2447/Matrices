@@ -62,6 +62,60 @@ public class Matrix{
             }
         }
 
+        public Matrix multiply(int multiply){
+            Matrix forReturn = new Matrix(this.rows, this.columns);
+            for(int iter = 0; iter < this.size(); iter++){
+                forReturn.elements[iter] = this.elements[iter] * multiply;
+            }
+            return forReturn;
+        }
+
+        public Matrix multiply(Matrix multiply){
+            if(this.columns != multiply.rows){
+                return null;
+            }
+            else{
+                Matrix forReturn = new Matrix(this.rows, this.columns);
+                int row = 1;
+                int column = 1;
+                for(int iter = 0; iter < forReturn.size(); iter++){
+                    forReturn.elements[iter] = getProductSum(this.getRow(row), multiply.getColumn(column));
+                    if((iter + 1) % this.columns == 0){
+                        column = 1;
+                        row++;
+                    }
+                    else{
+                        column++;
+                    }
+                }
+                return forReturn;
+            }
+        }
+
+        public static int getProductSum(int[] array1, int[] array2){
+            int result = 0;
+            for(int iter = 0; iter < array1.length; iter++){
+                result = result + array1[iter] * array2[iter];
+            }
+            return result;
+        }
+
+        public int[] getRow(int rowNum){
+            int[] forReturn = new int[this.columns];
+            for(int iter = 0; iter < forReturn.length; iter++){
+                forReturn[iter] = this.elements[rowNum + iter - 1];
+            }
+            return forReturn;
+        }
+
+        public int[] getColumn(int columnNum){
+            int[] forReturn = new int[this.rows];
+            for(int iter = 0; iter < forReturn.length; iter++){
+                forReturn[iter] = this.elements[this.rows * iter + columnNum - 1];
+            }
+            return forReturn;
+        }
+
         public static int getSmaller(int int1, int int2){
             if(int1 > int2){
                 return int2;
@@ -69,9 +123,5 @@ public class Matrix{
             else{
                 return int1;
             }
-        }
-
-        public static void main(String[] args){
-
         }
 }
