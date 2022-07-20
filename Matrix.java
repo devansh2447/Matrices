@@ -62,6 +62,14 @@ public class Matrix{
             }
         }
 
+        public Matrix subtract(int subtract){
+            return this.add(-1 * subtract);
+        }
+
+        public Matrix subtract(Matrix subtract){
+            return this.add(subtract.multiply(-1));
+        }
+
         public Matrix multiply(int multiply){
             Matrix forReturn = new Matrix(this.rows, this.columns);
             for(int iter = 0; iter < this.size(); iter++){
@@ -90,6 +98,22 @@ public class Matrix{
                 }
                 return forReturn;
             }
+        }
+
+        public Matrix divide(int divide){
+            return this.multiply(1/divide);
+        }
+
+        public Matrix divide(Matrix divide){
+            return this.multiply(divide.reciprocal());
+        }
+
+        public Matrix reciprocal(){
+            Matrix forReturn = new Matrix(this.rows, this.columns);
+            for(int iter = 0; iter < forReturn.size(); iter++){
+                forReturn.elements[iter] = 1/this.elements[iter];
+            }
+            return forReturn;
         }
 
         public static int getProductSum(int[] array1, int[] array2){
